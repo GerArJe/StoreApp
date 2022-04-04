@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">StoreApp</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="email_data">prueba@prueba.com</string>
+    <string name="password_data">123456</string>
+    <string name="agregar_producto">Agregar Producto</string>
+    <string name="imagen_del_producto">Imagen del producto</string>
+</resources>
