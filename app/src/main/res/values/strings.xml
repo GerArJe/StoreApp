@@ -8,4 +8,6 @@
     <string name="password_data">123456</string>
     <string name="agregar_producto">Agregar Producto</string>
     <string name="imagen_del_producto">Imagen del producto</string>
+    <string name="resgistro">Resgistro</string>
+    <string name="registrarse">Registrarse</string>
 </resources>
