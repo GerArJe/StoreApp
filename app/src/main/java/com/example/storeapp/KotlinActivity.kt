@@ -117,14 +117,14 @@ class KotlinActivity : AppCompatActivity() {
             println("$key - $value")
         }
 
-        val myCLient: User = User(name = "prueba@prueba.com", password = "123456")
-        myCLient.login()
+//        val myCLient: User = User(name = "prueba@prueba.com", password = "123456")
+//        myCLient.login()
+//
+//        val myUser: User = User(name = "prueba@prueba.com", password = "123456")
 
-        val myUser: User = User(name = "prueba@prueba.com", password = "123456")
-
-        if (myCLient is User) {
-            println("Es cliente")
-        }
+//        if (myCLient is User) {
+//            println("Es cliente")
+//        }
 
         clickListener {
             println(it)

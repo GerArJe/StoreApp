@@ -11,4 +11,7 @@
     <string name="resgistro">Resgistro</string>
     <string name="registrarse">Registrarse</string>
     <string name="agregar_usuario">Agregar Usuario</string>
+    <string name="nombre">Nombre</string>
+    <string name="documento">Documento</string>
+    <string name="url_foto">Url Foto</string>
 </resources>
