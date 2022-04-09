@@ -7,13 +7,13 @@
 
         <variable
             name="view_model"
-            type="com.example.storeapp.UserListActivityViewMoldel" />
+            type="com.example.storeapp.viewModel.UserListActivityViewMoldel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".UserListActivity">
+        tools:context=".view.UserListActivity">
 
         <Button
             android:id="@+id/bt_add_user_list_user"

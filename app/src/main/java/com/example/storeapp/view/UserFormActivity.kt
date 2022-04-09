@@ -1,10 +1,12 @@
-package com.example.storeapp
+package com.example.storeapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.example.storeapp.R
+import com.example.storeapp.viewModel.UserFormActivityViewModel
 import com.example.storeapp.databinding.ActivityUserFormBinding
 
 class UserFormActivity : AppCompatActivity() {

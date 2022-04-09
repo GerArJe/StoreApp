@@ -14,4 +14,6 @@
     <string name="nombre">Nombre</string>
     <string name="documento">Documento</string>
     <string name="url_foto">Url Foto</string>
+    <string name="editar">Editar</string>
+    <string name="regresar">Regresar</string>
 </resources>

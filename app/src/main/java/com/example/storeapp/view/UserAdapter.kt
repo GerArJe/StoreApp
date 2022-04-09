@@ -1,10 +1,12 @@
-package com.example.storeapp
+package com.example.storeapp.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.storeapp.R
 import com.example.storeapp.databinding.UserItemBinding
+import com.example.storeapp.model.User
 
 class UserAdapter(private var users: ArrayList<User>) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {

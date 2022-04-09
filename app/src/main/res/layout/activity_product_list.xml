@@ -6,13 +6,13 @@
     <data>
         <variable
             name="view_model"
-            type="com.example.storeapp.ProductListActivityViewModel" />
+            type="com.example.storeapp.viewModel.ProductListActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ProductListActivity">
+        tools:context=".view.ProductListActivity">
 
         <Button
             android:id="@+id/bt_add_product_list_product"

@@ -1,4 +1,4 @@
-package com.example.storeapp
+package com.example.storeapp.model
 
 enum class ProductStatus(val value: Int) {
     AVAILABLE(1), SENT(2), SOLD(3);

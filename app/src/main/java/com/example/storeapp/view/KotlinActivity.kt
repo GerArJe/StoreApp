@@ -1,7 +1,9 @@
-package com.example.storeapp
+package com.example.storeapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.storeapp.R
+import com.example.storeapp.model.Product
 
 class KotlinActivity : AppCompatActivity() {
 

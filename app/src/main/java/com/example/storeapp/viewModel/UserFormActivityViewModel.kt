@@ -1,6 +1,7 @@
-package com.example.storeapp
+package com.example.storeapp.viewModel
 
 import androidx.lifecycle.ViewModel
+import com.example.storeapp.model.User
 
 class UserFormActivityViewModel : ViewModel() {
     var user: User = User("", "", "", "", "")

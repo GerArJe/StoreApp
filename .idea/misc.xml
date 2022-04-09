@@ -4,8 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Projects/StoreApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Projects/StoreApp/app/src/main/res/layout/activity_product_detail.xml" value="0.18541666666666667" />
         <entry key="..\:/Projects/StoreApp/app/src/main/res/layout/activity_product_list.xml" value="0.18541666666666667" />
-        <entry key="..\:/Projects/StoreApp/app/src/main/res/layout/activity_user_form.xml" value="0.18541666666666667" />
+        <entry key="..\:/Projects/StoreApp/app/src/main/res/layout/activity_user_form.xml" value="0.13858695652173914" />
         <entry key="..\:/Projects/StoreApp/app/src/main/res/layout/activity_user_list.xml" value="0.18541666666666667" />
         <entry key="..\:/Projects/StoreApp/app/src/main/res/layout/product_item.xml" value="0.18541666666666667" />
         <entry key="..\:/Projects/StoreApp/app/src/main/res/layout/user_item.xml" value="0.18541666666666667" />

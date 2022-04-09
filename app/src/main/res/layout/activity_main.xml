@@ -7,7 +7,7 @@
 
         <variable
             name="view_model"
-            type="com.example.storeapp.MainActivityViewModel" />
+            type="com.example.storeapp.viewModel.MainActivityViewModel" />
 
         <variable
             name="title"
@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".view.MainActivity">
 
         <ImageView
             android:id="@+id/iv_logo_login"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="32dp"
             android:hint="@string/email"
-            android:text="@={view_model.user.name}"
+            android:text="@={view_model.user.email}"
             android:inputType="textEmailAddress"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

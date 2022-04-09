@@ -6,7 +6,7 @@
 
         <variable
             name="user"
-            type="com.example.storeapp.User" />
+            type="com.example.storeapp.model.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,7 +37,7 @@
             android:id="@+id/tv_price_user_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{user.password}"
+            android:text="@{user.email}"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/iv_user_item"

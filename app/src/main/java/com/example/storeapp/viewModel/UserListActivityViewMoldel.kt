@@ -1,6 +1,8 @@
-package com.example.storeapp
+package com.example.storeapp.viewModel
 
 import androidx.lifecycle.ViewModel
+import com.example.storeapp.model.User
+import com.example.storeapp.view.UserAdapter
 
 class UserListActivityViewMoldel : ViewModel() {
     private val users: ArrayList<User> = arrayListOf()

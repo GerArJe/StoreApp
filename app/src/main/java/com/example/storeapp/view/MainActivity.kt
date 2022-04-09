@@ -1,11 +1,15 @@
-package com.example.storeapp
+package com.example.storeapp.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.example.storeapp.viewModel.MainActivityViewModel
+import com.example.storeapp.R
 import com.example.storeapp.databinding.ActivityMainBinding
+import com.example.storeapp.model.User
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -25,8 +29,18 @@ class MainActivity : AppCompatActivity() {
         binding.title = "Modificado otra vez"
 
 
+        binding.btSignupLogin.setOnClickListener {
+            val intentSignup = Intent(applicationContext, UserFormActivity::class.java)
+            startActivity(intentSignup)
+        }
         binding.btLoginLogin.setOnClickListener {
             if (viewModel.login()) {
+                val intentLogin = Intent(applicationContext, ProductListActivity::class.java)
+                intentLogin.apply {
+                    putExtra("message", "Hola")
+                    putExtra("data", viewModel.user.email)
+                }
+                startActivity(intentLogin)
                 Toast.makeText(this, "Inciando Sesion....", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Datos inválidos", Toast.LENGTH_SHORT).show()

@@ -1,23 +1,35 @@
-package com.example.storeapp
+package com.example.storeapp.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.storeapp.R
 import com.example.storeapp.databinding.ProductItemBinding
+import com.example.storeapp.model.Product
 
 class ProductAdapter(private var products: ArrayList<Product>) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+
+    var onItemClickListener: ((Product) -> Unit)? = null
 
     fun refresh(products: ArrayList<Product>) {
         this.products = products
         notifyDataSetChanged()
     }
+
     class ProductViewHolder(private val binding: ProductItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Product) {
+        fun bind(product: Product, onItemClickListener: ((Product) -> Unit)?) {
             binding.product = product
+
+            binding.root.setOnClickListener {
+                onItemClickListener?.let {
+                    it(product)
+                }
+            }
         }
     }
 
@@ -30,7 +42,7 @@ class ProductAdapter(private var products: ArrayList<Product>) :
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(products[position])
+        holder.bind(products[position], onItemClickListener)
     }
 
     override fun getItemCount(): Int = products.size

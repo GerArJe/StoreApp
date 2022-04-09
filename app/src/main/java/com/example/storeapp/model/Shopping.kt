@@ -1,4 +1,4 @@
-package com.example.storeapp
+package com.example.storeapp.model
 
 interface Shopping {
 
