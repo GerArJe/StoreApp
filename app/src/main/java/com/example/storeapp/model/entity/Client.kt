@@ -1,4 +1,6 @@
-package com.example.storeapp.model
+package com.example.storeapp.model.entity
+
+import com.example.storeapp.model.Shopping
 
 class Client(cart:ArrayList<Product>? = arrayListOf(), name: String, password: String,
              document: String, email: String, photoUrl: String?

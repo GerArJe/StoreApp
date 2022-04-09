@@ -4,15 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.storeapp.R
 import com.example.storeapp.databinding.ProductItemBinding
-import com.example.storeapp.model.Product
+import com.example.storeapp.model.entity.Product
 
 class ProductAdapter(private var products: ArrayList<Product>) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     var onItemClickListener: ((Product) -> Unit)? = null
+    var onItemLongClickListener: ((Product) -> Unit)? = null
 
     fun refresh(products: ArrayList<Product>) {
         this.products = products
@@ -22,13 +22,24 @@ class ProductAdapter(private var products: ArrayList<Product>) :
     class ProductViewHolder(private val binding: ProductItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Product, onItemClickListener: ((Product) -> Unit)?) {
+        fun bind(
+            product: Product,
+            onItemClickListener: ((Product) -> Unit)?,
+            onItemLongClickListener: ((Product) -> Unit)?
+        ) {
             binding.product = product
 
             binding.root.setOnClickListener {
                 onItemClickListener?.let {
                     it(product)
                 }
+            }
+
+            binding.root.setOnLongClickListener {
+                onItemLongClickListener?.let {
+                    it(product)
+                }
+                true
             }
         }
     }
@@ -42,7 +53,7 @@ class ProductAdapter(private var products: ArrayList<Product>) :
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(products[position], onItemClickListener)
+        holder.bind(products[position], onItemClickListener, onItemLongClickListener)
     }
 
     override fun getItemCount(): Int = products.size

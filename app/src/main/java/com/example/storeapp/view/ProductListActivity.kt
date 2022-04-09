@@ -9,10 +9,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.storeapp.viewModel.ProductListActivityViewModel
 import com.example.storeapp.R
 import com.example.storeapp.databinding.ActivityProductListBinding
+import com.example.storeapp.model.entity.Product
 
 class ProductListActivity : AppCompatActivity() {
     lateinit var binding: ActivityProductListBinding
     lateinit var viewModel: ProductListActivityViewModel
+    lateinit var adapter: ProductAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,17 +29,48 @@ class ProductListActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_list)
         viewModel = ViewModelProvider(this)[ProductListActivityViewModel::class.java]
-        binding.viewModel = viewModel
-        viewModel.loadProducts()
-        viewModel.refreshData()
+        adapter = ProductAdapter(arrayListOf())
+        binding.adapter = adapter
 
-        viewModel.adapter.onItemClickListener = {
+        loadProducts()
+
+        adapter.onItemClickListener = {
             Toast.makeText(applicationContext, it.name, Toast.LENGTH_SHORT).show()
 
             val intentDetail = Intent(applicationContext, ProductDetailActivity::class.java)
-            intentDetail.putExtra("product", it)
+            intentDetail.putExtra("product_key", it.key)
 
             startActivity(intentDetail)
         }
+
+        adapter.onItemLongClickListener = {
+            viewModel.deleteProduct(it)
+            Toast.makeText(
+                applicationContext,
+                "Producto ${it.name} eliminado...",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        binding.btAddProductListProduct.setOnClickListener {
+            startActivity(Intent(applicationContext, ProductAddActivity::class.java))
+        }
+
+
+    }
+
+    private fun loadProducts() {
+        viewModel.products.observe(this) {
+            if (it.isEmpty()) {
+                viewModel.loadFakeData()
+            }
+            adapter.refresh(it as ArrayList<Product>)
+        }
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadProducts()
     }
 }

@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.storeapp.R
 import com.example.storeapp.databinding.UserItemBinding
-import com.example.storeapp.model.User
+import com.example.storeapp.model.entity.User
 
 class UserAdapter(private var users: ArrayList<User>) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {

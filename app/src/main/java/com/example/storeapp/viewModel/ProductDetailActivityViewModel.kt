@@ -1,9 +1,19 @@
 package com.example.storeapp.viewModel
 
+import android.app.Application
+import androidx.databinding.Bindable
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.storeapp.model.Product
+import com.example.storeapp.model.entity.Product
+import com.example.storeapp.model.repository.ProductRepository
 
-class ProductDetailActivityViewModel : ViewModel() {
+class ProductDetailActivityViewModel(application: Application) : AndroidViewModel(application) {
+    private val productRepository: ProductRepository = ProductRepository(application)
 
-    var product = Product("", 0)
+    lateinit var product: LiveData<Product>
+
+    fun getProductByKey(productKey: Int) {
+        product = productRepository.getByKeyLocal(productKey)
+    }
 }

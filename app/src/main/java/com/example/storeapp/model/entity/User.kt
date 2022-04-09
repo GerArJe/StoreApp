@@ -1,4 +1,4 @@
-package com.example.storeapp.model
+package com.example.storeapp.model.entity
 
 open class User(
     var name: String,

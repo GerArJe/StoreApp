@@ -13,16 +13,27 @@
         android:theme="@style/Theme.StoreApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.ProductAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.ProductDetailActivity"
             android:exported="false" />
         <activity
             android:name=".view.UserListActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".view.UserFormActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".view.ProductListActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".view.KotlinActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,12 +41,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.KotlinActivity"
-            android:exported="true" />
-        <activity
-            android:name=".view.MainActivity"
-            android:exported="true"></activity>
     </application>
 
 </manifest>

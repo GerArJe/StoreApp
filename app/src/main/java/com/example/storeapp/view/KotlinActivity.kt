@@ -3,7 +3,7 @@ package com.example.storeapp.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.storeapp.R
-import com.example.storeapp.model.Product
+import com.example.storeapp.model.entity.Product
 
 class KotlinActivity : AppCompatActivity() {
 
@@ -110,7 +110,7 @@ class KotlinActivity : AppCompatActivity() {
         loadProducts()
         showProduct(name = "sdasd", price = 23)
 
-        val portatil: Product = Product("Portatil ASUS", 3500000, "No hay")
+        val portatil: Product = Product(name = "Portatil ASUS", price = 3500000, description = "No hay")
         portatil.getShortInfo()
 
         val (n, p, d, s) = portatil

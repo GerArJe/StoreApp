@@ -6,7 +6,7 @@
 
         <variable
             name="user"
-            type="com.example.storeapp.model.User" />
+            type="com.example.storeapp.model.entity.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

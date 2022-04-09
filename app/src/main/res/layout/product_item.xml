@@ -6,7 +6,7 @@
 
         <variable
             name="product"
-            type="com.example.storeapp.model.Product" />
+            type="com.example.storeapp.model.entity.Product" />
     </data>
 
 
