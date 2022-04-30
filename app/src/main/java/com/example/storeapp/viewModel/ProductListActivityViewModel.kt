@@ -13,9 +13,9 @@ class ProductListActivityViewModel(application: Application) : AndroidViewModel(
     private val productRepository: ProductRepository = ProductRepository(application)
     var products: LiveData<List<Product>> = productRepository.productsObserver
 
-    fun deleteProduct(product: Product) {
+    fun deleteProduct(product: Product): LiveData<Boolean> {
 //        productRepository.deleteLocal(product)
-        productRepository.deleteFirestore(product)
+        return productRepository.deleteFirestore(product)
     }
 
     fun loadFakeData() {
@@ -25,5 +25,7 @@ class ProductListActivityViewModel(application: Application) : AndroidViewModel(
     fun loadProducts() {
 //        productRepository.loadAllLocal()
         productRepository.loadAllFirestore()
+//        productRepository.listenAllFirestore()
+//        productRepository.loadAllAPI()
     }
 }

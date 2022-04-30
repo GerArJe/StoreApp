@@ -9,7 +9,7 @@
             name="view_model"
             type="com.example.storeapp.viewModel.ProductAddActivityViewModel" />
 
-        <import type="com.example.storeapp.utils.BindingUtilsKt"/>
+        <import type="com.example.storeapp.utils.BindingUtilsKt" />
     </data>
 
     <ScrollView
@@ -35,6 +35,27 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_title_product_form" />
 
+            <ImageButton
+                android:id="@+id/ib_camera_product_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/ic_camera"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/ib_gallery_product_add"
+                app:layout_constraintTop_toBottomOf="@id/iv_product_form" />
+
+            <ImageButton
+                android:id="@+id/ib_gallery_product_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/ic_gallery"
+                app:layout_constraintLeft_toRightOf="@id/ib_camera_product_add"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_product_form" />
+
+
             <TextView
                 android:id="@+id/tv_title_product_form"
                 android:layout_width="match_parent"
@@ -59,7 +80,7 @@
                 android:text="@={view_model.product.name}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_product_form" />
+                app:layout_constraintTop_toBottomOf="@id/ib_camera_product_add" />
 
             <EditText
                 android:id="@+id/et_price_product_form"
@@ -74,18 +95,6 @@
                 app:layout_constraintTop_toBottomOf="@id/et_name_product_form" />
 
             <EditText
-                android:id="@+id/et_url_image_product_form"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="32dp"
-                android:hint="@string/url_imagen"
-                android:inputType="textUri"
-                android:text="@={view_model.product.urlImage}"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_price_product_form" />
-
-            <EditText
                 android:id="@+id/et_description_product_form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,7 +104,7 @@
                 android:text="@={view_model.product.description}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_url_image_product_form" />
+                app:layout_constraintTop_toBottomOf="@id/et_price_product_form" />
 
 
             <Button
