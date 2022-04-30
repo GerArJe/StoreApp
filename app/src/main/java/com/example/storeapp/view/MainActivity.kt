@@ -30,13 +30,8 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 
         if (preferences.getBoolean("login", false)) {
-            val intentLogin = Intent(applicationContext, ProductListActivity::class.java)
-            intentLogin.apply {
-                putExtra("message", "Hola")
-                putExtra("data", viewModel.user.email)
-            }
-            startActivity(intentLogin)
-            finish()
+            goToProductList()
+
         }
 
         binding.tvTitleLogin.text = "Modificado por código"
@@ -51,26 +46,40 @@ class MainActivity : AppCompatActivity() {
             startActivity(intentSignup)
         }
         binding.btLoginLogin.setOnClickListener {
-            if (viewModel.login()) {
+            viewModel.login().observe(this) {
+                it?.let {
+                    login()
 
-//                val preferences: SharedPreferences =
-//                    getSharedPreferences("store_app.pref", MODE_PRIVATE)
-                val editor: SharedPreferences.Editor = preferences.edit()
-                editor.putBoolean("login", true)
-                editor.apply()
-
-                val intentLogin = Intent(applicationContext, ProductListActivity::class.java)
-                intentLogin.apply {
-                    putExtra("message", "Hola")
-                    putExtra("data", viewModel.user.email)
+                } ?: run {
+                    Toast.makeText(this, "Datos inválidos", Toast.LENGTH_SHORT).show()
                 }
-                startActivity(intentLogin)
-                Toast.makeText(this, "Inciando Sesion....", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Datos inválidos", Toast.LENGTH_SHORT).show()
             }
         }
 
+    }
+
+    private fun goToProductList() {
+        val preferences: SharedPreferences =
+            getSharedPreferences("store_app.pref", MODE_PRIVATE)
+        val intentLogin = Intent(applicationContext, ProductListActivity::class.java)
+        intentLogin.apply {
+            putExtra("message", "Hola")
+            putExtra("data", preferences.getString("email", ""))
+        }
+        startActivity(intentLogin)
+        finish()
+    }
+
+    private fun login() {
+        val preferences: SharedPreferences =
+            getSharedPreferences("store_app.pref", MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = preferences.edit()
+        editor.putBoolean("login", true)
+        editor.putString("email", viewModel.user.email)
+        editor.apply()
+
+       goToProductList()
+        Toast.makeText(this, "Inciando Sesion....", Toast.LENGTH_SHORT).show()
     }
 
     override fun onStart() {

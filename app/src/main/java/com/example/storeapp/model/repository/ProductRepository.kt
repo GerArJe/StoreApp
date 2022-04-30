@@ -1,23 +1,41 @@
 package com.example.storeapp.model.repository
 
 import android.content.Context
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.storeapp.model.entity.Product
 import com.example.storeapp.model.local.StoreAppDB
 import com.example.storeapp.model.local.dao.ProductDAO
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class ProductRepository(context: Context) {
+    private val PRODUCT_COLLECTION: String = "products"
     private val db: StoreAppDB = StoreAppDB.getInstance(context)
     private val productDAO: ProductDAO = db.productDAO()
-    lateinit var products: LiveData<List<Product>>
-
-    init {
-        loadAllLocal()
-    }
+    var productsObserver: MutableLiveData<List<Product>> = MutableLiveData()
+    var productObserver: MutableLiveData<Product> = MutableLiveData()
+    private val firestore: FirebaseFirestore = Firebase.firestore
 
     fun loadAllLocal() {
-        products = productDAO.getAll()
+        val productsList = productDAO.getAll()
+        productsObserver.value = productsList
+    }
+
+    fun loadAllFirestore() {
+        firestore.collection(PRODUCT_COLLECTION).get().addOnSuccessListener {
+            val productList: ArrayList<Product> = arrayListOf<Product>()
+            if (!it.isEmpty) {
+                for (document in it.documents) {
+                    val myProduct: Product? = document.toObject(Product::class.java)
+                    myProduct?.let {
+                        it.id = document.id
+                        productList.add(it)
+                    }
+                }
+            }
+            productsObserver.value = productList
+        }
     }
 
     fun loadFakeData() {
@@ -37,19 +55,43 @@ class ProductRepository(context: Context) {
         }
     }
 
-    fun getByKeyLocal(key: Int): LiveData<Product> {
-        return productDAO.getByKey(key)
+    fun getByKeyLocal(key: Int) {
+        productObserver.value = productDAO.getByKey(key)
+    }
+
+    fun getByIdFirestore(id: String) {
+        firestore.collection(PRODUCT_COLLECTION).document(id).get().addOnSuccessListener {
+            val myProduct: Product? = it.toObject(Product::class.java)
+            myProduct?.let {
+                it.id = id
+                productObserver.value = it
+            }
+        }
     }
 
     fun addLocal(product: Product) {
         productDAO.add(product)
     }
 
+    fun addFirestore(product: Product) {
+        firestore.collection(PRODUCT_COLLECTION).add(product)
+    }
+
     fun updateLocal(product: Product) {
         productDAO.update(product)
     }
 
+    fun updateFirestore(product: Product) {
+        firestore.collection(PRODUCT_COLLECTION).document(product.id).set(product)
+    }
+
     fun deleteLocal(product: Product) {
         productDAO.delete(product)
+        loadAllLocal()
+    }
+
+    fun deleteFirestore(product: Product) {
+        firestore.collection(PRODUCT_COLLECTION).document(product.id).delete()
+        loadAllFirestore()
     }
 }

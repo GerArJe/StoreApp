@@ -8,10 +8,10 @@ import com.example.storeapp.model.entity.Product
 interface ProductDAO {
 
     @Query("select * from products")
-    fun getAll(): LiveData<List<Product>>
+    fun getAll(): List<Product>
 
     @Query("select * from products where `key`=:keyValue")
-    fun getByKey(keyValue: Int): LiveData<Product>
+    fun getByKey(keyValue: Int): Product
 
     @Insert
     fun add(product: Product)

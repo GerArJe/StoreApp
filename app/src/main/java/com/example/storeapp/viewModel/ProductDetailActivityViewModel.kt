@@ -1,10 +1,8 @@
 package com.example.storeapp.viewModel
 
 import android.app.Application
-import androidx.databinding.Bindable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import com.example.storeapp.model.entity.Product
 import com.example.storeapp.model.repository.ProductRepository
 
@@ -14,6 +12,12 @@ class ProductDetailActivityViewModel(application: Application) : AndroidViewMode
     lateinit var product: LiveData<Product>
 
     fun getProductByKey(productKey: Int) {
-        product = productRepository.getByKeyLocal(productKey)
+        productRepository.getByKeyLocal(productKey)
+        product = productRepository.productObserver
+    }
+
+    fun getProductById(myProductId: String) {
+        productRepository.getByIdFirestore(myProductId)
+        product = productRepository.productObserver
     }
 }

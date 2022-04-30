@@ -11,12 +11,11 @@ import com.example.storeapp.view.ProductAdapter
 class ProductListActivityViewModel(application: Application) : AndroidViewModel(application) {
     //    var adapter: ProductAdapter = ProductAdapter(products)
     private val productRepository: ProductRepository = ProductRepository(application)
-    var products: LiveData<List<Product>> = productRepository.products
-
-    var productVariable: MutableLiveData<Product> = MutableLiveData()
+    var products: LiveData<List<Product>> = productRepository.productsObserver
 
     fun deleteProduct(product: Product) {
-        productRepository.deleteLocal(product)
+//        productRepository.deleteLocal(product)
+        productRepository.deleteFirestore(product)
     }
 
     fun loadFakeData() {
@@ -24,6 +23,7 @@ class ProductListActivityViewModel(application: Application) : AndroidViewModel(
     }
 
     fun loadProducts() {
-        productRepository.loadAllLocal()
+//        productRepository.loadAllLocal()
+        productRepository.loadAllFirestore()
     }
 }
